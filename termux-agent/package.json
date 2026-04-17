@@ -1,0 +1,17 @@
+{
+  "name": "termux-claude-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tiny Claude chat agent optimized for Termux. Zero npm dependencies — uses Node 18+ built-in fetch.",
+  "bin": {
+    "agent": "agent.mjs"
+  },
+  "scripts": {
+    "start": "node agent.mjs",
+    "chat": "node agent.mjs"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
