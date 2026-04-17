@@ -31,6 +31,7 @@ const EnvSchema = z.object({
   DEFAULT_MODE: z.string().default("FULL_POWER"),
   PRO_SE_FOOTER: z.string().default("Prepared by pro se plaintiff."),
   REFERENCE_DATE: z.string().optional().default(""),
+  AUTH_KEY: z.string().optional().default(""),
 });
 
 export type Env = z.infer<typeof EnvSchema>;

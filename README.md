@@ -54,6 +54,7 @@ npm test
 | `DEFAULT_MODE` | Default `AgentMode`. | `FULL_POWER` |
 | `PRO_SE_FOOTER` | Footer appended to legal filings. | `Prepared by pro se plaintiff.` |
 | `REFERENCE_DATE` | Optional reference date for relative-date normalization. | today |
+| `AUTH_KEY` | If set, the HTTP server requires header `X-ZRA-KEY: <value>` on every non-/health request. | empty (auth off) |
 
 ## CLI usage
 

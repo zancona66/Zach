@@ -19,6 +19,17 @@ const logger = pino({ level: env.LOG_LEVEL });
 export function buildServer() {
   const app = Fastify({ logger });
 
+  if (env.AUTH_KEY) {
+    app.addHook("onRequest", async (req, reply) => {
+      if (req.url.startsWith("/health")) return;
+      const header = req.headers["x-zra-key"];
+      const provided = Array.isArray(header) ? header[0] : header;
+      if (!provided || provided !== env.AUTH_KEY) {
+        reply.code(401).send({ error: "unauthorized", hint: "missing or invalid X-ZRA-KEY header" });
+      }
+    });
+  }
+
   app.post("/chat", async (req, reply) => {
     const parsed = ChatRequestSchema.safeParse(req.body);
     if (!parsed.success) {
