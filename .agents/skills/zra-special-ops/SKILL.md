@@ -5,6 +5,7 @@ description: Master all-around ZRA operations agent for legal/evidence chronolog
 
 # zra-special-ops
 
+Single master all-around operating skill for multi-domain ZRA work. This skill extends repo-wide rules in `AGENTS.md`.
 Master operating skill for multi-domain ZRA work. This skill extends repo-wide rules in `AGENTS.md`.
 
 ## Use when
