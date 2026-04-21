@@ -1,64 +1,94 @@
 ---
 name: zra-special-ops
-description: High-rigor reusable workflow for ZRA operations spanning legal/evidence organization, jewelry CAD/manufacturing specs, precious-metals finance math, catalog data cleanup, business communications, and repo automation. Use for tasks requiring chronology, traceability, explicit validation, and non-destructive edits; do not trigger for casual chat or generic coding unrelated to these workflows.
+description: Master all-around ZRA operations agent for legal/evidence chronology, jewelry CAD/manufacturing, precious-metals finance math, CSV/catalog cleanup, business communications, and repo automation/validation.
 ---
 
 # zra-special-ops
 
-This skill extends (does not replace) repo-wide rules in `AGENTS.md`.
+Master operating skill for multi-domain ZRA work. This skill extends repo-wide rules in `AGENTS.md`.
 
 ## Use when
-- The task crosses or tightly depends on ZRA operational domains: legal/evidence, CAD/manufacturing, metals finance, catalog data, structured business comms, or workflow automation.
-- Output quality requires chronological integrity, source traceability, math verification, and auditable validation.
+Use this skill when work touches one or more of:
+- legal / evidence / chronology
+- jewelry CAD / manufacturing
+- precious-metals finance and mixed-unit math
+- CSV / catalog cleanup
+- business communications
+- repo automation and validation
 
 ## Do not use when
-- Casual conversation or brainstorming with no repository/workflow deliverable.
-- Generic coding tasks that do not involve ZRA operational controls.
+- The task is casual chat or open-ended brainstorming with no repository/workflow deliverable.
+- The task is generic coding that does not require ZRA domain controls or chronology/traceability rigor.
 
-## Scaffold
-- Reusable templates: `.agents/skills/zra-special-ops/scaffold/task-brief.md` and `.agents/skills/zra-special-ops/scaffold/validation-log.md`.
+## Required controls
+1. Keep facts, user statements, assumptions, and inferences explicitly separated.
+2. Use absolute dates where possible (for example, `2026-04-21` instead of “today”).
+3. Show nontrivial math as **Inputs -> Formula -> Result**.
+4. Keep edits non-destructive and minimally scoped.
+5. Ask before destructive or irreversible actions.
+6. Validate with the narrowest meaningful checks before completion.
+7. Never fabricate facts, file contents, calculations, or outcomes.
 
-## Core operating principles
-1. Decide and proceed unless blocked by missing credentials/files or destructive external side effects.
-2. Inspect workspace conventions before introducing new patterns.
-3. Keep facts, user statements, assumptions, and inferences separate.
-4. Prefer absolute dates in timelines and evidence summaries.
-5. Show nontrivial math as **Inputs -> Formula -> Result**.
-6. Edit non-destructively with recoverable versions and small diffs.
-7. Validate before completion; disclose any skipped validation.
-8. Do not fabricate facts, figures, citations, or outputs.
+## Standard workflow
+1. **Inspect**
+   - Read the relevant files, schemas, templates, and recent patterns.
+   - Identify constraints, chronology dependencies, and validation hooks.
+2. **Classify**
+   - Label each key item as: fact, user statement, assumption, or inference.
+   - Note domain(s) involved and risk level (low/medium/high).
+3. **Plan**
+   - Propose the smallest coherent diff and explicit validations.
+   - State any assumptions that materially affect implementation.
+4. **Execute**
+   - Apply minimal, reviewable edits.
+   - Preserve traceability, required formats, and existing conventions.
+5. **Validate**
+   - Run narrow checks first (file/target specific), then broaden only if needed.
+   - For calculations, verify units, constants, and rounding sensitivity.
+6. **Report**
+   - Return: TL;DR, files changed, validation run, risks/unresolved gaps, confidence.
 
-## Domain modules
-### Legal / evidence
-- Preserve chronology and source-to-claim mapping.
-- Flag contradictions, missing exhibits, duplicate claims, and open gaps.
+## Domain operating notes
+### 1) Legal / evidence / chronology
+- Preserve event order and source-to-claim mapping.
+- Flag contradictions, duplicates, missing exhibits, and unresolved timeline gaps.
+- Prefer dated timeline entries in ISO format (`YYYY-MM-DD`).
 
-### Jewelry CAD / manufacturing
-- Default units: millimeters.
-- Target tolerance: ±0.05 to ±0.10 mm unless overridden.
-- Include manufacturability constraints, dimensions, clearances, thickness, material assumptions.
-- Naming standard for CAD exports: `ANCONA_[Piece]_[Size]_v###.stl` and `ANCONA_[Piece]_[Size]_v###.obj`.
-- Target tolerance: +/- 0.05 to 0.10 mm unless overridden.
-- Include manufacturability constraints, dimensions, clearances, thickness, material assumptions.
+### 2) Jewelry CAD / manufacturing
+- Default unit: millimeters.
+- Default tolerance band: ±0.05 to ±0.10 mm unless explicitly overridden.
+- Include manufacturability constraints (clearances, minimum thickness, fit, shrinkage assumptions).
+- Preserve/export naming convention when applicable:
+  - `ANCONA_[Piece]_[Size]_v###.stl`
+  - `ANCONA_[Piece]_[Size]_v###.obj`
 
-### Metals finance
+### 3) Precious-metals finance and mixed-unit math
 - Default constants:
   - `1 troy ounce = 31.1034768 grams`
   - `1 dwt = 1.55517384 grams`
-- Distinguish gross weight, fine weight, melt value, financed value, payoff, margin, ROI.
-- Flag unit drift and rounding sensitivity.
+- Keep gross weight, fine weight, melt value, financed value, payoff, margin, and ROI distinct.
+- Explicitly flag unit drift and rounding effects.
 
-### Catalog / CSV
-- Validate structured outputs, preserve required column order, and never silently drop rows.
-- Report rows added/changed/removed plus invalid or inferred fields.
+### 4) CSV / catalog cleanup
+- Preserve required column order and schema expectations.
+- Never silently drop rows; report rows added/changed/removed.
+- Call out invalid, missing, normalized, or inferred fields.
 
-### Business communications
+### 5) Business communications
 - Tone: calm, precise, assertive.
-- Make the ask explicit and tie statements to supporting facts.
+- Make requested action explicit; tie claims to verifiable facts.
+- Keep chronology and commitments unambiguous (with absolute dates where relevant).
 
-## Execution sequence
-1. Inspect relevant files/schemas/examples.
-2. Plan minimal coherent change + validations.
-3. Execute durable fix with smallest practical diff.
-4. Verify via tests/checks/recalculations.
-5. Report files changed, validations, assumptions, and risks.
+### 6) Repo automation and validation
+- Reuse existing scripts and conventions before adding new tooling.
+- Prefer deterministic checks and auditable outputs.
+- Record what was run, what passed/failed, and why.
+
+## Completion checklist
+- [ ] Domains identified and constraints inspected
+- [ ] Facts/user statements/assumptions/inferences separated
+- [ ] Absolute dates used where applicable
+- [ ] Nontrivial math shown as Inputs -> Formula -> Result
+- [ ] Minimal diff applied
+- [ ] Validation executed (or explicitly justified if unavailable)
+- [ ] Risks and unresolved gaps documented
