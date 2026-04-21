@@ -1,5 +1,9 @@
 # Validation Log
 
+## Commands run
+- `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension" . --glob '!.git/*'`
+- `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension|units" AGENTS.md .agents/skills/README.md .agents/skills/zra-master-ops/SKILL.md .agents/skills/zra-master-ops/scaffold/*.md README.md`
+- `test -f .agents/standards/CAD_CHECKLIST.md && test -f .agents/runs/2026-04-20-cad-benchmark/task-brief.md && test -f .agents/runs/2026-04-20-cad-benchmark/validation-log.md && echo ok`
 ## Checks run
 - Command: `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension" . --glob '!.git/*'`
 - Purpose: Locate CAD-related files/content in repository.
@@ -20,12 +24,12 @@
 - `AGENTS.md`
 - `README.md`
 - `.agents/skills/README.md`
-- `.agents/skills/zra-special-ops/SKILL.md`
-- `.agents/skills/zra-special-ops/scaffold/task-brief.md`
-- `.agents/skills/zra-special-ops/scaffold/validation-log.md`
+- `.agents/skills/zra-master-ops/SKILL.md`
+- `.agents/skills/zra-master-ops/scaffold/task-brief.md`
+- `.agents/skills/zra-master-ops/scaffold/validation-log.md`
 
 ## Files changed
-- `.agents/skills/zra-special-ops/SKILL.md`
+- `.agents/skills/zra-master-ops/SKILL.md`
 - `.agents/standards/CAD_CHECKLIST.md`
 - `.agents/runs/2026-04-20-cad-benchmark/task-brief.md`
 - `.agents/runs/2026-04-20-cad-benchmark/validation-log.md`
@@ -35,6 +39,11 @@
 - CAD wording consistency review (units, tolerance notation, naming convention coverage).
 - Presence checks for benchmark run artifacts and checklist.
 
+## Math checks
+- Inputs: not applicable (no nontrivial calculations in this benchmark run).
+- Formula: not applicable.
+- Result: not applicable.
+
 ## Assumptions
 - No dedicated CAD design files exist yet; benchmark is doc/process hardening only.
 - Standard STL/OBJ naming should be defined in skill and checklist for future CAD outputs.
@@ -42,3 +51,7 @@
 ## Risks / unresolved gaps
 - No sample CAD spec document exists to field-test checklist compliance.
 - CAD checklist effectiveness is unproven until a live CAD task run.
+
+## Final status
+- Complete
+- Confidence: High
