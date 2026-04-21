@@ -12,6 +12,9 @@
   - `.agents/skills/zra-master-ops/SKILL.md`
   - `.agents/skills/zra-master-ops/scaffold/task-brief.md`
   - `.agents/skills/zra-master-ops/scaffold/validation-log.md`
+  - `.agents/skills/zra-special-ops/SKILL.md`
+  - `.agents/skills/zra-special-ops/scaffold/task-brief.md`
+  - `.agents/skills/zra-special-ops/scaffold/validation-log.md`
 - External reference(s): none.
 
 ## Traceability split
@@ -36,3 +39,5 @@
   - `.agents/skills/zra-master-ops/SKILL.md`
 - Files not to touch:
   - Source code or production runtime files (none present in this repo).
+- Non-destructive requirements: Smallest safe diffs only; no file deletions.
+- Validation requirements: Confirm file presence, inspect CAD-related wording consistency, and log commands/results.

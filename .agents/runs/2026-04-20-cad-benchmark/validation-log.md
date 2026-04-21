@@ -4,6 +4,21 @@
 - `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension" . --glob '!.git/*'`
 - `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension|units" AGENTS.md .agents/skills/README.md .agents/skills/zra-master-ops/SKILL.md .agents/skills/zra-master-ops/scaffold/*.md README.md`
 - `test -f .agents/standards/CAD_CHECKLIST.md && test -f .agents/runs/2026-04-20-cad-benchmark/task-brief.md && test -f .agents/runs/2026-04-20-cad-benchmark/validation-log.md && echo ok`
+## Checks run
+- Command: `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension" . --glob '!.git/*'`
+- Purpose: Locate CAD-related files/content in repository.
+- Result: pass
+- Evidence/location: Matches found in skill/scaffold docs; no standalone CAD spec files detected.
+
+- Command: `rg -n -i "cad|stl|obj|tolerance|mm|manufactur|dimension|units" AGENTS.md .agents/skills/README.md .agents/skills/zra-special-ops/SKILL.md .agents/skills/zra-special-ops/scaffold/*.md README.md`
+- Purpose: Inspect consistency of units, tolerance notation, naming references, and formatting.
+- Result: pass
+- Evidence/location: Identified `+/-` tolerance notation and missing explicit STL/OBJ naming rule in skill CAD module.
+
+- Command: `test -f .agents/standards/CAD_CHECKLIST.md && test -f .agents/runs/2026-04-20-cad-benchmark/task-brief.md && test -f .agents/runs/2026-04-20-cad-benchmark/validation-log.md && echo ok`
+- Purpose: Validate benchmark outputs/checklist exist.
+- Result: pass
+- Evidence/location: `ok` output.
 
 ## Files reviewed
 - `AGENTS.md`
