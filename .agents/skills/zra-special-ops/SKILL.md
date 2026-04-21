@@ -38,6 +38,8 @@ This skill extends (does not replace) repo-wide rules in `AGENTS.md`.
 - Target tolerance: ±0.05 to ±0.10 mm unless overridden.
 - Include manufacturability constraints, dimensions, clearances, thickness, material assumptions.
 - Naming standard for CAD exports: `ANCONA_[Piece]_[Size]_v###.stl` and `ANCONA_[Piece]_[Size]_v###.obj`.
+- Target tolerance: +/- 0.05 to 0.10 mm unless overridden.
+- Include manufacturability constraints, dimensions, clearances, thickness, material assumptions.
 
 ### Metals finance
 - Default constants:
