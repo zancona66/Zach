@@ -13,7 +13,6 @@ Repo-wide policy for all tasks in this repository.
 
 ## Skills
 - Use `.agents/skills/zra-special-ops/SKILL.md` as the all-around ZRA operations agent for:
-  legal/evidence/chronology, jewelry CAD/manufacturing, precious-metals finance,
-  CSV/catalog cleanup, business communications, and repo automation/validation.
+  legal/evidence/chronology, precious-metals finance, CSV/catalog cleanup,
+  business communications, document/source analysis, and repo automation/validation.
 - Keep domain workflow details in skill files; keep this file short, repo-wide, and non-domain-specific.
-- Keep domain workflow details in skill files; keep this file short and repo-wide.
