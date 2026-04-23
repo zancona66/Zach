@@ -15,3 +15,8 @@ Agent scaffolds, prompts, and workflows for structured business, legal, and oper
   - `.agents/skills/zra-special-ops/scaffold/README.md`
   - `.agents/skills/zra-special-ops/scaffold/task-brief.md`
   - `.agents/skills/zra-special-ops/scaffold/validation-log.md`
+- Deep coding skill: `.agents/skills/deep-coded/SKILL.md`
+- Reusable templates:
+  - `.agents/skills/deep-coded/scaffold/README.md`
+  - `.agents/skills/deep-coded/scaffold/task-brief.md`
+  - `.agents/skills/deep-coded/scaffold/validation-log.md`
