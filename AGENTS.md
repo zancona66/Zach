@@ -15,4 +15,7 @@ Repo-wide policy for all tasks in this repository.
 - Use `.agents/skills/zra-special-ops/SKILL.md` as the all-around ZRA operations agent for:
   legal/evidence/chronology, precious-metals finance, CSV/catalog cleanup,
   business communications, document/source analysis, and repo automation/validation.
+- Use `.agents/skills/super-agent-code/SKILL.md` as the cross-domain router when the right
+  sub-skill is not obvious or a task spans multiple domains. Prefer direct sub-skill use
+  (`zra-master-ops`, `zra-special-ops`, `deep-coded`) when the domain is unambiguous.
 - Keep domain workflow details in skill files; keep this file short, repo-wide, and non-domain-specific.

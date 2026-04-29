@@ -20,3 +20,9 @@ Agent scaffolds, prompts, and workflows for structured business, legal, and oper
   - `.agents/skills/deep-coded/scaffold/README.md`
   - `.agents/skills/deep-coded/scaffold/task-brief.md`
   - `.agents/skills/deep-coded/scaffold/validation-log.md`
+- Cross-domain orchestrator skill: `.agents/skills/super-agent-code/SKILL.md`
+- Routing rubric: `.agents/skills/super-agent-code/ROUTING.md`
+- Reusable templates:
+  - `.agents/skills/super-agent-code/scaffold/README.md`
+  - `.agents/skills/super-agent-code/scaffold/task-brief.md`
+  - `.agents/skills/super-agent-code/scaffold/validation-log.md`
