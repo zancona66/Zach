@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Task Brief Builder</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --panel: #1a2028;
+    --border: #2a323d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #4a9eff;
+    --accent-hover: #6db1ff;
+    --success: #3fb950;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+  }
+  header {
+    grid-column: 1 / -1;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .panel h2 {
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .field {
+    margin-bottom: 14px;
+  }
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  input[type="text"], input[type="date"], textarea, select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.15s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 60px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  fieldset {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0 14px;
+  }
+  legend {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 6px;
+  }
+  .checks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 12px;
+  }
+  .checks label {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text);
+    margin: 0;
+    cursor: pointer;
+  }
+  .checks input { margin-right: 6px; }
+  .radio-row {
+    display: flex;
+    gap: 16px;
+  }
+  .radio-row label {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text);
+    margin: 0;
+    cursor: pointer;
+  }
+  .radio-row input { margin-right: 6px; }
+  .preview {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 70vh;
+    overflow-y: auto;
+    color: var(--text);
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  button:hover { background: var(--accent-hover); }
+  button.secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  button.secondary:hover {
+    background: var(--panel);
+    border-color: var(--accent);
+  }
+  .status {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--success);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .status.show { opacity: 1; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Task Brief Builder</h1>
+      <p class="subtitle">Generates a scaffold-compatible task brief for the ZRA agent skills in this repo.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Request</h2>
+      <div class="field">
+        <label for="skill">Skill scope anchor</label>
+        <select id="skill">
+          <option value="zra-special-ops">zra-special-ops</option>
+          <option value="zra-master-ops">zra-master-ops</option>
+          <option value="deep-coded">deep-coded</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="objective">Objective</label>
+        <textarea id="objective" placeholder="What outcome does this task produce?"></textarea>
+      </div>
+      <div class="field">
+        <label for="deliverable">Requested deliverable(s)</label>
+        <textarea id="deliverable" placeholder="Files, reports, decisions"></textarea>
+      </div>
+      <div class="field">
+        <label for="deadline">Deadline (absolute date)</label>
+        <input type="date" id="deadline" />
+      </div>
+
+      <h2 style="margin-top: 24px;">Inputs &amp; sources</h2>
+      <div class="field">
+        <label for="sources">Source file(s) — one per line</label>
+        <textarea id="sources" placeholder="path/to/file.md"></textarea>
+      </div>
+      <div class="field">
+        <label for="external">External reference(s) — one per line</label>
+        <textarea id="external"></textarea>
+      </div>
+
+      <h2 style="margin-top: 24px;">Classify</h2>
+      <fieldset>
+        <legend>Domains</legend>
+        <div class="checks">
+          <label><input type="checkbox" class="domain" value="legal/evidence" /> legal/evidence</label>
+          <label><input type="checkbox" class="domain" value="CAD/manufacturing" /> CAD/manufacturing</label>
+          <label><input type="checkbox" class="domain" value="metals finance" /> metals finance</label>
+          <label><input type="checkbox" class="domain" value="catalog" /> catalog</label>
+          <label><input type="checkbox" class="domain" value="communications" /> communications</label>
+          <label><input type="checkbox" class="domain" value="automation" /> automation</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Risk level</legend>
+        <div class="radio-row">
+          <label><input type="radio" name="risk" value="low" checked /> low</label>
+          <label><input type="radio" name="risk" value="medium" /> medium</label>
+          <label><input type="radio" name="risk" value="high" /> high</label>
+        </div>
+      </fieldset>
+
+      <h2 style="margin-top: 24px;">Plan &amp; validate</h2>
+      <div class="field">
+        <label for="diff">Smallest coherent diff</label>
+        <textarea id="diff"></textarea>
+      </div>
+      <div class="field">
+        <label for="validation">Validation plan (narrowest first)</label>
+        <textarea id="validation"></textarea>
+      </div>
+
+      <h2 style="margin-top: 24px;">Traceability split</h2>
+      <div class="row">
+        <div class="field">
+          <label for="facts">Facts</label>
+          <textarea id="facts"></textarea>
+        </div>
+        <div class="field">
+          <label for="userstmt">User statements</label>
+          <textarea id="userstmt"></textarea>
+        </div>
+        <div class="field">
+          <label for="assumptions">Assumptions</label>
+          <textarea id="assumptions"></textarea>
+        </div>
+        <div class="field">
+          <label for="inferences">Inferences</label>
+          <textarea id="inferences"></textarea>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 24px;">Planned outputs</h2>
+      <div class="field">
+        <label for="create">Files to create</label>
+        <textarea id="create"></textarea>
+      </div>
+      <div class="field">
+        <label for="update">Files to update</label>
+        <textarea id="update"></textarea>
+      </div>
+      <div class="field">
+        <label for="notouch">Files not to touch</label>
+        <textarea id="notouch"></textarea>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Preview <span id="status" class="status">Copied</span></h2>
+      <div class="actions">
+        <button id="copyBtn">Copy markdown</button>
+        <button id="downloadBtn" class="secondary">Download .md</button>
+        <button id="resetBtn" class="secondary">Reset</button>
+      </div>
+      <pre class="preview" id="preview"></pre>
+    </section>
+  </div>
+
+<script>
+  const ids = ["skill","objective","deliverable","deadline","sources","external",
+               "diff","validation","facts","userstmt","assumptions","inferences",
+               "create","update","notouch"];
+
+  function bulletize(text) {
+    if (!text || !text.trim()) return "- ";
+    return text.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => "- " + l).join("\n");
+  }
+
+  function singleLine(text) {
+    return (text || "").trim();
+  }
+
+  function render() {
+    const v = {};
+    ids.forEach(id => v[id] = document.getElementById(id).value);
+    const domains = Array.from(document.querySelectorAll(".domain:checked")).map(c => c.value).join(" | ") || "—";
+    const risk = document.querySelector('input[name="risk"]:checked').value;
+
+    const md =
+`# Task Brief
+
+## Request
+- Skill scope anchor: \`${v.skill}\` is the master all-around ZRA operations skill.
+- Objective: ${singleLine(v.objective)}
+- Requested deliverable(s): ${singleLine(v.deliverable)}
+- Deadline (absolute date): ${singleLine(v.deadline)}
+
+## Inputs and sources
+- Source file(s):
+${bulletize(v.sources)}
+- External reference(s):
+${bulletize(v.external)}
+
+## Workflow phase checkpoints
+### Inspect
+- Relevant files/patterns inspected:
+- Chronology dependencies found:
+
+### Classify
+- Domain(s): ${domains}
+- Risk level: ${risk}
+
+### Plan
+- Smallest coherent diff: ${singleLine(v.diff)}
+- Validation plan (narrowest first): ${singleLine(v.validation)}
+
+### Execute
+- Planned implementation steps:
+
+### Validate
+- Targeted checks to run:
+
+### Report
+- Required return fields:
+
+## Traceability split
+- Facts:
+${bulletize(v.facts)}
+- User statements:
+${bulletize(v.userstmt)}
+- Assumptions:
+${bulletize(v.assumptions)}
+- Inferences:
+${bulletize(v.inferences)}
+
+## Constraints
+- Skill preservation check: confirm \`${v.skill}\` remains the active master all-around skill for this task.
+- Non-destructive requirements:
+- Validation requirements:
+- Scope boundaries:
+
+## Planned outputs
+- Files to create:
+${bulletize(v.create)}
+- Files to update:
+${bulletize(v.update)}
+- Files not to touch:
+${bulletize(v.notouch)}
+`;
+    document.getElementById("preview").textContent = md;
+    return md;
+  }
+
+  function flashStatus(msg) {
+    const el = document.getElementById("status");
+    el.textContent = msg;
+    el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 1500);
+  }
+
+  document.querySelectorAll("input, textarea, select").forEach(el => {
+    el.addEventListener("input", render);
+    el.addEventListener("change", render);
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    const md = render();
+    try {
+      await navigator.clipboard.writeText(md);
+      flashStatus("Copied");
+    } catch {
+      flashStatus("Copy failed");
+    }
+  });
+
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    const md = render();
+    const blob = new Blob([md], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "task-brief.md";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    document.querySelectorAll("input[type='text'], input[type='date'], textarea").forEach(el => el.value = "");
+    document.querySelectorAll(".domain").forEach(el => el.checked = false);
+    document.querySelector('input[name="risk"][value="low"]').checked = true;
+    document.getElementById("skill").value = "zra-special-ops";
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
