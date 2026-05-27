@@ -12,8 +12,6 @@ Repo-wide policy for all tasks in this repository.
 7. Ask before destructive or irreversible actions.
 
 ## Skills
-- Use `.agents/skills/zra-special-ops/SKILL.md` as the all-around ZRA operations agent for:
-  legal/evidence/chronology, jewelry CAD/manufacturing, precious-metals finance,
-  CSV/catalog cleanup, business communications, and repo automation/validation.
+- Primary: `.agents/skills/blackbook-ultimate/SKILL.md` — Super Blackbook Ultimate v013, all-purpose omni command OS for ZRA / AJLLC. Use for any operational task requiring the full framework.
+- Legacy: `.agents/skills/zra-master-ops/SKILL.md` and `.agents/skills/zra-special-ops/SKILL.md` — superseded by blackbook-ultimate.
 - Keep domain workflow details in skill files; keep this file short, repo-wide, and non-domain-specific.
-- Keep domain workflow details in skill files; keep this file short and repo-wide.

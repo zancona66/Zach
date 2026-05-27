@@ -1,35 +1,27 @@
 # Skills
 
-## Available skill
-- `zra-master-ops`
+## Available skills
 
-## When to use it
-Use for ZRA operational work involving legal/evidence, jewelry CAD/manufacturing, metals-finance math, CSV/catalog cleanup, communications, or repo automation requiring chronology, traceability, validation, and small non-destructive diffs.
+### `blackbook-ultimate` (primary)
+Super Blackbook Ultimate v013 — all-purpose omni command OS for ZRA / AJLLC. Supersedes `zra-master-ops` and `zra-special-ops` for full-framework tasks.
 
-## When not to use it
-Do not use for casual chat, generic coding unrelated to these workflows, or broad brainstorming with no concrete deliverable.
+**When to use:** any ZRA operational task requiring the full Blackbook framework — legal/evidence, jewelry CAD, precious-metals finance, business ops, coding/automation, multi-domain work, packet assembly, or when `/bb` is invoked.
 
-## Example prompts
-1. "Build an exhibit register and chronology from these filings and flag contradictions by absolute date."
-2. "Draft a manufacturable ring spec in mm with tolerances and export naming from this CAD brief."
-3. "Recalculate melt value, payoff, and ROI from these mixed-unit gold weights with explicit formulas."
-4. "Normalize this marketplace CSV, preserve column order, and report rows changed."
-5. "Inspect this repo workflow and return a traceable validation report with assumptions and risks."
-- `zra-special-ops`
+**When not to use:** casual chat, simple questions, generic coding unrelated to ZRA ops.
 
-## When to use it
-- Use for ZRA operational tasks spanning legal/evidence, jewelry CAD/manufacturing, metals-finance math, catalog/CSV cleanup, structured business communications, or related workflow automation where chronology, traceability, and strict validation matter.
+**Scaffold:** `.agents/skills/blackbook-ultimate/scaffold/` — task-brief, validation-log, state-card templates.
 
-## When not to use it
-- Do not use for casual chat, open-ended brainstorming, or generic coding tasks that do not require ZRA operational controls.
+**Standalone prompt:** `.agents/skills/blackbook-ultimate/SUPER_BLACKBOOK_ULTIMATE_v013.md` — drop into any agent, GPT, or workspace.
 
-## Scaffold
-- Path: `.agents/skills/zra-special-ops/scaffold/`
-- Includes reusable templates for intake (`task-brief.md`) and verification (`validation-log.md`).
+**Example prompts:**
+1. "/bb Build an exhibit-backed proof map from these filings with timeline, contradictions, and attorney questions."
+2. "/cad + /pricing Turn this ring concept into a manufacturable spec with tolerances, QC checks, and margin scenarios."
+3. "/damages + /reconcile Build a damages ledger from these invoices with formulas, double-counting checks, and verification needs."
+4. "/vendor + /qc Draft a supplier remedy path with evidence, deadline, and escalation ladder."
+5. "/WARROOM /STATE Full war room on this matter — evidence spine, claim-to-proof, defense map, and next 5 actions."
 
-## Example prompts
-1. "Build an exhibit register from these filings and flag chronology conflicts by absolute date."
-2. "Draft a manufacturable ring spec in mm with tolerances and production notes from this CAD brief."
-3. "Recalculate melt value, payoff, and ROI from these mixed-unit gold weights and purity assumptions."
-4. "Normalize this marketplace CSV, preserve column order, and report rows added/changed/removed."
-5. "Refactor this repo script and return a traceable validation report with assumptions and risks."
+### `zra-master-ops` (legacy)
+Original multi-domain ZRA operating skill. Use `blackbook-ultimate` for new work.
+
+### `zra-special-ops` (legacy)
+Extended ZRA operations skill. Use `blackbook-ultimate` for new work.
