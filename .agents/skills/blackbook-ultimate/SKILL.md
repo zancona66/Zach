@@ -7,10 +7,10 @@ description: Super Blackbook Ultimate v013 — all-purpose omni command OS for Z
 
 Super Blackbook Ultimate v013 integrated as a repo skill. This skill extends repo-wide rules in `AGENTS.md` and supersedes `zra-master-ops` and `zra-special-ops` for tasks requiring the full Blackbook framework.
 
-## Standalone prompt
+## Standalone prompts
 
-The full drop-in prompt for any AI agent or workspace lives at:
-`.agents/skills/blackbook-ultimate/SUPER_BLACKBOOK_ULTIMATE_v013.md`
+- **General-purpose omni framework:** `.agents/skills/blackbook-ultimate/SUPER_BLACKBOOK_ULTIMATE_v013.md`
+- **Shopify image pipeline blackbook (AJLLC):** `.agents/skills/blackbook-ultimate/SHOPIFY_BLACKBOOK_v1.md` — unified PSD spec + CLI export pipeline + QA sign-off + Shopify metadata + manifest schema + handoff ZIP structure. Use for all Ancona Jewelry / Cloude Cowork image production work.
 
 ## Use when
 
